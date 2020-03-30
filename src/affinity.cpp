@@ -54,15 +54,26 @@ INJECTION affinity::set( const std::size_t desired_core )
      */
     cpu_set_t   *cpuset( nullptr );
     
-    const auto n_cores_avail = sysconf( _SC_NPROCESSORS_ONLN );
+    /**
+     * FIXME, there's several ways to do this
+     * we should probably check which is actually
+     * avail on the calling system. 
+     */
+    const auto n_cores_avail(
+        sysconf( _SC_NPROCESSORS_ONLN )
+    );
     assert( n_cores_avail > 0 );
     /**
      * get num bytes to alloc
      */
-    const auto set_size_bytes = CPU_ALLOC_SIZE( n_cores_avail );
+    const auto set_size_bytes( 
+        CPU_ALLOC_SIZE( n_cores_avail )
+    );
     
     cpuset = CPU_ALLOC( n_cores_avail );
+
     assert( cpuset != nullptr );
+
     CPU_ZERO_S( set_size_bytes /** man pages says to use this val **/, cpuset );
     
     CPU_SET_S(  desired_core,
@@ -86,6 +97,9 @@ INJECTION affinity::set( const std::size_t desired_core )
         std::cerr << " exited with error ( " << str << " ).\n";
         exit( EXIT_FAILURE );
     }
+    
+    CPU_FREE( cpuset );
+    
     /** wait till we know we're on the right processor **/
     if( sched_yield() != 0 )
     {
@@ -98,6 +112,5 @@ INJECTION affinity::set( const std::size_t desired_core )
 #pragma message ( "No thread pinning for this platform, your results may vary!" )
 #endif
 #endif
-    CPU_FREE( cpuset );
     return;
 }

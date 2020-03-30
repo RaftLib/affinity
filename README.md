@@ -14,3 +14,11 @@ setting the following options:
 -DCUSTOM_NAMESPACE=True
 -DAFFINITY_NAMESPACE=Name
 ```
+* test cases only test functionality at the moment, 
+need to add test cases for perf as well and more 
+corner cases. 
+
+## NOTE
+* Currently  only sets affinity for Linux, 
+will assign others to do Win/Mac at some point. 
+
