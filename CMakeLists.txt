@@ -9,9 +9,12 @@ set( CMAKE_INCLUDE_CURRENT_DIR ON )
 
 mark_as_advanced( CUSTOM_NAMESPACE )
 set( CUSTOM_NAMESPACE false CACHE BOOL "Wrap the affinity call in a custom namespace using -DAFFINITY_NAMESPACE=\"namespace\" when configuring cmake." )
+mark_as_advanced( NAMESPACE )
+set( NAMESPASCE "" CACHE STRING "Namespace to inject" )
+
 if( CUSTOM_NAMESPACE )
 add_definitions( "-DINJECT_NAMESPACE=1" )
-add_definitions( "-DAFFINITY_NAMESPACE=${AFFINITY_NAMESPACE}" )
+add_definitions( "-DAFFINITY_NAMESPACE=${NAMESPACE}" )
 endif( CUSTOM_NAMESPACE )
 
 include_directories ( ${PROJECT_SOURCE_DIR} )

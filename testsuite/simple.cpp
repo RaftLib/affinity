@@ -11,13 +11,19 @@
 
 #include "affinity.hpp"
 
+#ifdef INJECT_NAMESPACE
+#define INJECTION DEMANGLE_NAMESPACE::
+#else
+#define INJECTION 
+#endif
+
 void producer( const int avail_cores )
 {
     cpu_set_t   cpuset;
     std::memset( &cpuset, 0x0, sizeof( cpu_set_t ) );
     for( auto i = 0; i < avail_cores; i++ )
     {
-        affinity::set( i );
+        INJECTION affinity::set( i );
 
         if( sched_getaffinity( 0 /** self **/,
                                sizeof( cpu_set_t ), 
@@ -47,7 +53,7 @@ void consumer( const int avail_cores )
     std::memset( &cpuset, 0x0, sizeof( cpu_set_t ) );
     for( auto i = 0; i < avail_cores; i++ )
     {
-        affinity::set( i );
+        INJECTION affinity::set( i );
 
         if( sched_getaffinity( 0 /** self **/,
                                sizeof( cpu_set_t ), 
