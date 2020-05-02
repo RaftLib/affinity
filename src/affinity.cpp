@@ -39,8 +39,8 @@
 #include <sched.h>
 #endif /** end if linux **/
 
-#ifdef INJECT_NAMESPACE
-#define INJECTION DEMANGLE_NAMESPACE::
+#ifdef INJECT_AFFINITY_NAMESPACE
+#define INJECTION AFFINITY_NAMESPACE::
 #else
 #define INJECTION 
 #endif
@@ -114,3 +114,4 @@ INJECTION affinity::set( const std::size_t desired_core )
 #endif
     return;
 }
+#undef INJECTION

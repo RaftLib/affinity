@@ -6,16 +6,23 @@ set( CMAKE_INCLUDE_CURRENT_DIR ON )
 
 
 
+##
+# AFFINITY_CUSTOM_NAMESPACE - set to true if you want
+# to inject a custom namespace. 
+##
+mark_as_advanced( AFFINITY_CUSTOM_NAMESPACE )
+set( AFFINITY_CUSTOM_NAMESPACE false CACHE BOOL "Wrap the affinity call in a custom namespace using -DAFFINITY_NAMESPACE=\"namespace\" when configuring cmake." )
+##
+# AFFINITY_NAMESPACE - set to actual name you want to 
+# inject. 
+##
+mark_as_advanced( AFFINITY_NAMESPACE )
+set( AFFINITY_NAMESPACE "" CACHE STRING "Namespace to inject" )
 
-mark_as_advanced( CUSTOM_NAMESPACE )
-set( CUSTOM_NAMESPACE false CACHE BOOL "Wrap the affinity call in a custom namespace using -DAFFINITY_NAMESPACE=\"namespace\" when configuring cmake." )
-mark_as_advanced( NAMESPACE )
-set( NAMESPASCE "" CACHE STRING "Namespace to inject" )
-
-if( CUSTOM_NAMESPACE )
-add_definitions( "-DINJECT_NAMESPACE=1" )
-add_definitions( "-DAFFINITY_NAMESPACE=${NAMESPACE}" )
-endif( CUSTOM_NAMESPACE )
+if( AFFINITY_CUSTOM_NAMESPACE )
+add_definitions( "-DINJECT_AFFINITY_NAMESPACE=1" )
+add_definitions( "-DAFFINITY_NAMESPACE=${AFFINITY_NAMESPACE}" )
+endif( AFFINITY_CUSTOM_NAMESPACE )
 
 include_directories ( ${PROJECT_SOURCE_DIR} )
 include_directories ( ${PROJECT_SOURCE_DIR}/include )

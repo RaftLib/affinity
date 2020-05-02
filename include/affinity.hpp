@@ -24,8 +24,8 @@
 #include <cstddef>
 
 
-#ifdef INJECT_NAMESPACE
-namespace DEMANGLE_NAMESPACE {
+#ifdef INJECT_AFFINITY_NAMESPACE
+namespace AFFINITY_NAMESPACE {
 #endif
 
 struct affinity
@@ -34,7 +34,7 @@ struct affinity
 };
 
 
-#ifdef INJECT_NAMESPACE
+#ifdef INJECT_AFFINITY_NAMESPACE
 } /** end namespace **/
 #endif /** end inject namespace **/
 

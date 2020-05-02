@@ -11,8 +11,8 @@
 
 #include "affinity.hpp"
 
-#ifdef INJECT_NAMESPACE
-#define INJECTION DEMANGLE_NAMESPACE::
+#ifdef INJECT_AFFINITY_NAMESPACE
+#define INJECTION AFFINITY_NAMESPACE::
 #else
 #define INJECTION 
 #endif
@@ -76,6 +76,8 @@ void consumer( const int avail_cores )
     }
     return;
 }
+
+#undef INJECTION
 
 int main()
 {
