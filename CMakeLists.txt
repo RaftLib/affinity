@@ -29,17 +29,13 @@ include_directories ( ${PROJECT_SOURCE_DIR}/include )
 add_subdirectory( src )
 
 mark_as_advanced( BUILD_TESTS )
-if( WIN32 )
-set( BUILD_TESTS false CACHE BOOL "Tests build target available if true" )
-else()
-set( BUILD_TESTS true CACHE BOOL "Tests build target available if true" )
-endif( WIN32 )
 
-
-if( BUILD_TESTS )
 ##
 # Set up unit tests
 ##
+if( BUILD_TESTS AND NOT WIN32 )
 enable_testing()
 add_subdirectory( testsuite )
-endif( BUILD_TESTS )
+endif( WIN32 )
+
+
