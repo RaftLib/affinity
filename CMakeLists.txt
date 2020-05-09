@@ -27,6 +27,7 @@ set( AFFINITY_NAMESPACE "" CACHE STRING "Namespace to inject" )
 endif()
 
 if( AFFINITY_CUSTOM_NAMESPACE )
+message (STATUS "Injecting the following namespace into your libaffinity build: ${AFFINITY_NAMESPACE}" )
 add_definitions( "-DINJECT_AFFINITY_NAMESPACE=1" )
 add_definitions( "-DAFFINITY_NAMESPACE=${AFFINITY_NAMESPACE}" )
 endif( AFFINITY_CUSTOM_NAMESPACE )
