@@ -6,8 +6,8 @@
 #include <cstdlib>
 #include <iostream>
 #include <cstdio>
-#include <unistd.h>
 #ifdef __linux
+#include <unistd.h>
 #include <sys/sysinfo.h>
 #include <sys/types.h>
 #endif
