@@ -11,13 +11,20 @@ set( CMAKE_INCLUDE_CURRENT_DIR ON )
 # to inject a custom namespace. 
 ##
 mark_as_advanced( AFFINITY_CUSTOM_NAMESPACE )
+
+if( NOT DEFINED AFFINITY_CUSTOM_NAMESPACE )
 set( AFFINITY_CUSTOM_NAMESPACE false CACHE BOOL "Wrap the affinity call in a custom namespace using -DAFFINITY_NAMESPACE=\"namespace\" when configuring cmake." )
+endif() 
+
 ##
 # AFFINITY_NAMESPACE - set to actual name you want to 
 # inject. 
 ##
 mark_as_advanced( AFFINITY_NAMESPACE )
+
+if( NOT DEFINED AFFINITY_NAMESPACE )
 set( AFFINITY_NAMESPACE "" CACHE STRING "Namespace to inject" )
+endif()
 
 if( AFFINITY_CUSTOM_NAMESPACE )
 add_definitions( "-DINJECT_AFFINITY_NAMESPACE=1" )
