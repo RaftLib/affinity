@@ -113,5 +113,5 @@ INJECTION affinity::set( const std::size_t desired_core )
 #endif
 #endif
     return;
-}
+} //end function here, just in case you lost curly brace
 #undef INJECTION
