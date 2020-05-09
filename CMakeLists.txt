@@ -36,6 +36,6 @@ mark_as_advanced( BUILD_TESTS )
 if( BUILD_TESTS AND NOT WIN32 )
 enable_testing()
 add_subdirectory( testsuite )
-endif( WIN32 )
+endif()
 
 
