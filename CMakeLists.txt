@@ -41,7 +41,7 @@ mark_as_advanced( BUILD_TESTS )
 ##
 # Set up unit tests
 ##
-if( BUILD_TESTS AND NOT WIN32 )
+if( BUILD_TESTS AND NOT WIN32 AND NOT APPLE )
 enable_testing()
 add_subdirectory( testsuite )
 endif()

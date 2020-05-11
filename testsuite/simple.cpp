@@ -7,6 +7,7 @@
 #define _GNU_SOURCE 1
 #endif
 #include <sched.h>
+
 #include <sys/sysinfo.h>
 
 #include "affinity.hpp"
