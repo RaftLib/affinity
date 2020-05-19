@@ -1,4 +1,9 @@
 # Affinity
+
+## Build status
+![CI](https://github.com/RaftLib/affinity/workflows/CI/badge.svg)
+
+## Notes
 * Pulled out raftlib core affinity functions to 
 try to make more modular. This piece looks like 
 it should be tested in isolation. 
@@ -19,6 +24,9 @@ file at the global level so that CFLAGS prop through all files:
 need to add test cases for perf as well and more 
 corner cases. 
 
-## NOTE
+## Platforms
 * Currently  only sets affinity for Linux, 
-will assign others to do Win/Mac at some point. 
+will assign others to do Win/Mac at some point.
+* CI currently only checks Linux but will add
+others as we enable setting affinity on those
+platforms.
