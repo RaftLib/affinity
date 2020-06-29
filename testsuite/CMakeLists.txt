@@ -8,6 +8,6 @@ set( TESTAPPS #list apps
 
 foreach( APP ${TESTAPPS} )
  add_executable( "${APP}_affinity" "${APP}.cpp" )
- target_link_libraries( "${APP}_affinity" affinity pthread )
+ target_link_libraries( "${APP}_affinity" affinity ${CMAKE_THREAD_LIBS_INIT} )
  add_test( NAME "${APP}_affinity_test" COMMAND "${APP}_affinity" )
 endforeach( APP ${TESTAPPS} )
