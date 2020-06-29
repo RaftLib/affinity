@@ -46,7 +46,11 @@ mark_as_advanced( BUILD_TESTS )
 # Set up unit tests
 ##
 if( BUILD_TESTS AND NOT WIN32 AND NOT APPLE )
+enable_testing()
+add_subdirectory( testsuite )
+endif()
 
+if( NOT WIN32 )
 ##
 # make and setup pkg-config
 ##
@@ -75,8 +79,4 @@ endif()
 
 configure_file( "affinity.pc.in" "affinity.pc" @ONLY )
 install( FILES ${CMAKE_CURRENT_BINARY_DIR}/affinity.pc DESTINATION ${CMAKE_INSTALL_PREFIX}/pkgconfig/ )
-enable_testing()
-add_subdirectory( testsuite )
 endif()
-
-
