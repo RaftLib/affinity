@@ -10,7 +10,7 @@
 
 #include <sys/sysinfo.h>
 
-#include "affinity.hpp"
+#include <affinity>
 
 #ifdef INJECT_AFFINITY_NAMESPACE
 #define INJECTION AFFINITY_NAMESPACE::

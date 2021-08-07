@@ -24,6 +24,27 @@ file at the global level so that CFLAGS prop through all files:
 need to add test cases for perf as well and more 
 corner cases. 
 
+## Usage
+Include the header file
+```cpp
+#include <affinity>
+```
+then link 
+```bash
+-laffinity
+```
+and use this library inside your c++ code base
+```cpp
+affinity::set( core );
+```
+and that's pretty much it. If you've chosen to 
+inject your own namespace when building the
+library, you'll need to modify the invocation
+above like this:
+```cpp
+your_namespace::affinity::set( core );
+```
+
 ## Platforms
 * Currently  only sets affinity for Linux, 
 will assign others to do Win/Mac at some point.

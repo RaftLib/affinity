@@ -14,7 +14,7 @@
 #include <errno.h>
 #include <cassert>
 
-#include "affinity.hpp"
+#include <affinity>
 #ifdef __linux
 
 /** for get cpu **/
@@ -114,4 +114,24 @@ INJECTION affinity::set( const std::size_t desired_core )
 #endif
     return;
 } //end function here, just in case you lost curly brace
+
+
+int  
+affinity::get()
+{
+
+int out_core = -1;
+#ifdef __linux
+
+
+
+#else /** not linux **/
+#if defined __APPLE__
+#warning "No coreid for this platform, your results may vary!"
+#elif defined _WIN64 || defined _WIN32
+#pragma message ( "No coreid for this platform, your results may vary!" )
+#endif
+#endif
+return( out_core );
+}
 #undef INJECTION

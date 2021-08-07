@@ -1,9 +1,9 @@
 /**
- * demangle.hpp - 
+ * affinity.hpp - 
  * @author: Jonathan Beard, BoB R (2noodle)
  * @version: Sat, March 28 2020
  * 
- * Copyright 2020 RaftLib
+ * Copyright 2021 RaftLib
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,6 +31,8 @@ namespace AFFINITY_NAMESPACE {
 struct affinity
 {
    static void set( const std::size_t desired_core );
+
+   static int  get(); 
 };
 
 
