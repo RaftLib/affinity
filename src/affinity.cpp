@@ -14,7 +14,7 @@
 #include <errno.h>
 #include <cassert>
 
-#include "affinity.hpp"
+#include <affinity>
 #ifdef __linux
 
 /** for get cpu **/
