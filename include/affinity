@@ -32,7 +32,6 @@ struct affinity
 {
    static void set( const std::size_t desired_core );
 
-   static int  get(); 
 };
 
 
