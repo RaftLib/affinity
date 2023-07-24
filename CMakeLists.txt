@@ -6,6 +6,14 @@ set( CMAKE_INCLUDE_CURRENT_DIR ON )
 find_package( Threads )
 
 
+##
+# Build with -fPIC
+##
+mark_as_advanced( BUILD_FPIC )
+set( BUILD_FPIC true CACHE BOOL "Generate position-independent code (-fPIC)" )
+if( BUILD_FPIC )
+    set(BUILD_FPIC_FLAG "-fPIC")
+endif( BUILD_FPIC )
 
 ##
 # AFFINITY_CUSTOM_NAMESPACE - set to true if you want
